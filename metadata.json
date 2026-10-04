@@ -1,0 +1,7 @@
+{
+  "name": "AI Content Studio",
+  "description": "Context-driven content intelligence platform. Create once, adapt everywhere for Instagram, LinkedIn, X, TikTok, and GitHub.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

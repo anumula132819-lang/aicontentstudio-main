@@ -1,0 +1,160 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg: #0D0814;
+    --bg-deep: #160D20;
+    --card: #21132B;
+    --purple: #A855F7;
+    --purple-bright: #C026D3;
+    --pink: #F472B6;
+    --gold: #F5C451;
+    --text: #FFF8FC;
+    --text-muted: #B8A8BE;
+    --border: #3A2347;
+    --success: #55D6A0;
+
+    --font-display: 'Space Grotesk', system-ui, sans-serif;
+    --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Custom scrollbars with refined purple-pink track */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--purple) 0%, var(--purple-bright) 100%);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--purple-bright) 0%, var(--pink) 100%);
+}
+
+/* Standardized Card & Panels using Design Tokens */
+.studio-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.studio-card-interactive {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.studio-card-interactive:hover {
+  border-color: rgba(168, 85, 247, 0.4);
+  box-shadow: 0 12px 32px -8px rgba(168, 85, 247, 0.15);
+}
+
+/* Glass panel aligned with design tokens */
+.glass-panel {
+  background: rgba(33, 19, 43, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 36px -10px rgba(0, 0, 0, 0.6);
+}
+
+/* Standardized Action Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, var(--purple) 0%, var(--purple-bright) 100%);
+  color: var(--text);
+  font-weight: 600;
+  border-radius: 0.875rem;
+  border: none;
+  box-shadow: 0 4px 14px rgba(192, 38, 211, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 6px 18px rgba(192, 38, 211, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: var(--bg-deep);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  border-color: rgba(168, 85, 247, 0.5);
+  background: rgba(33, 19, 43, 0.9);
+  color: #fff;
+}
+
+/* Subdued, Soft Ambient Glows (reduced by 30%) */
+.glow-subtle-purple {
+  box-shadow: 0 0 24px -6px rgba(168, 85, 247, 0.25);
+}
+
+.glow-subtle-pink {
+  box-shadow: 0 0 24px -6px rgba(244, 114, 182, 0.22);
+}
+
+.glow-subtle-gold {
+  box-shadow: 0 0 24px -6px rgba(245, 196, 81, 0.2);
+}
+
+/* Headline gradient */
+.text-hero-gradient {
+  background: linear-gradient(135deg, #F5C451 0%, #F472B6 50%, #C026D3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.92; transform: scale(1.01); }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
