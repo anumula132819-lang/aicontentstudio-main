@@ -417,9 +417,21 @@ async function startServer() {
     });
   }
 
-  app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-  });
+  let port = Number(PORT);
+  const listen = (p: number) => {
+    const server = app.listen(p, () => {
+      console.log(`Server running at http://localhost:${p}`);
+    });
+    server.on('error', (err: any) => {
+      if (err.code === 'EADDRINUSE') {
+        console.warn(`Port ${p} is in use, trying http://localhost:${p + 1}...`);
+        listen(p + 1);
+      } else {
+        console.error(err);
+      }
+    });
+  };
+  listen(port);
 }
 
 startServer();
